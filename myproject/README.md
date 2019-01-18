@@ -1,6 +1,6 @@
 # myproject
 
-> A Vue.js project
+> vue的学习例子
 
 ## Build Setup
 
