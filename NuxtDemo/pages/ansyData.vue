@@ -7,8 +7,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-
+  import request from '~/service/index'
   export default {
     data() {
       return {
@@ -16,7 +15,7 @@
       }
     },
     async asyncData() {
-      let {data} = await axios.get('https://api.myjson.com/bins/1ha2kw')
+      let {data} = await request.get('https://api.myjson.com/bins/1ha2kw')
       return {info: data}
     }
   }

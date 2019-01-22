@@ -5,15 +5,15 @@ import qs from 'qs'
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
-  timeout: 5000 // 请求超时时间(毫秒数)
+  timeout: 10000 // 请求超时时间
 })
 
 service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 // request拦截器
 service.interceptors.request.use(config => {
-  // 在发送请求之前做些什么
-  if(config.method ==='post'){
+  //  POST 传参序列化
+  if (config.method === 'post') {
     config.data = qs.stringify(config.data)
   }
   return config
@@ -24,7 +24,6 @@ service.interceptors.request.use(config => {
 })
 
 // respone拦截器
-// 添加响应拦截器
 service.interceptors.response.use(function (response) {
   // 对响应数据做点什么
   return response;
@@ -33,4 +32,32 @@ service.interceptors.response.use(function (response) {
   return Promise.reject(error);
 });
 
-export default service
+export default {
+  // post 方法
+  post(url, data) {
+    console.log('post request url', url)
+    return service({
+      method: 'post',
+      url,
+      params: data
+    })
+  },
+  // get 方法
+  get(url, data) {
+    console.log('get request url', url)
+    return service({
+      method: 'get',
+      url,
+      params: data
+    })
+  },
+  // delete 方法
+  delete(url, data) {
+    console.log('delete request url', url)
+    return service({
+      methods: 'delete',
+      url,
+      params: data
+    })
+  }
+}
