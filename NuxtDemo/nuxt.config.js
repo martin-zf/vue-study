@@ -34,23 +34,13 @@ module.exports = {
         })
       }
     },
-    vendor: ['axios','element-ui']
+    vendor: ['axios', 'element-ui','vuex']
 
   },
   plugins: [
-    { src: '~plugins/element-ui', ssr: true },
+    {src: '~plugins/element-ui'},
     '~/plugins/debug'
-  ],
-  babel:{
-    "plugins": [["component", [
-      {
-        "libraryName": "element-ui",
-        "styleLibraryName": "theme-default"
-      },
-      'transform-async-to-generator',
-      'transform-runtime'
-    ]]],
-    comments: true
-  },
+
+  ]
 }
 

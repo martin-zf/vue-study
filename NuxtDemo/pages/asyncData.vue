@@ -7,15 +7,15 @@
 </template>
 
 <script>
-  import request from '~/service/index'
+
   export default {
     data() {
       return {
         name: 'hello World',
       }
     },
-    async asyncData() {
-      let {data} = await request.get('https://api.myjson.com/bins/1ha2kw')
+    async asyncData({store,error}) {
+      let {data} = await store.dispatch('asyncData/loadData')
       return {info: data}
     }
   }
