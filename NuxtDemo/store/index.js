@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import user from './modules/user'
+import getters from './getters'
 
 Vue.use(Vuex)
-
-export const state = () => ({
-  counter: 0
+const store = () => new Vuex.Store({
+  modules: {
+    user
+  },
+  getters
 })
 
-export const mutations = {
-  increment (state) {
-    state.counter++
-  }
-}
+export default store
+
+
+

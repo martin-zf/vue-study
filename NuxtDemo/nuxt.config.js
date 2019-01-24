@@ -34,13 +34,30 @@ module.exports = {
         })
       }
     },
-    vendor: ['axios', 'element-ui','vuex']
+    vendor: ['axios', 'element-ui','vuex','js-cookie']
 
   },
   plugins: [
     {src: '~plugins/element-ui'},
     '~/plugins/debug'
 
-  ]
+  ],
+  env: {
+    baseUrl: 'http://localhost:8000/api'
+  },
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  proxy: {
+    '/api': {
+      target: 'https://www.jsz.top/api/v2/',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': ''
+      }
+
+    }
+  }
 }
 
