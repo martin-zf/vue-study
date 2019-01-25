@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie'
 
-const TokenKey = 'Authorization'
+const TokenKey = 'Trace-Token'
 
 export function getToken() {
   return Cookies.get(TokenKey)

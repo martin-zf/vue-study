@@ -1,17 +1,16 @@
 <template>
   <div>
-    success login
+    success login! <br>
 
-    <span>token:</span><span>{{$store.state.user.token}}</span><br>
-
-    <span>token:</span><span>{{$store.getters.token}}</span><br>
+    <span>token:</span><span>{{$store.state.token}}</span><br>
 
     <button @click="getAccountIncome">click me</button>
   </div>
 </template>
 
 <script>
-  import {login, getAccountIncome} from '~/api/login'
+  import {login, getAccountIncome} from '~/api/user'
+
   export default {
     name: "index",
     created() {

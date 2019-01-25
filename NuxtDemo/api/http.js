@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
-import store from '~/store'
 import {getToken} from '~/utils/auth'
+import store from '~/store'
 
 
 // 创建axios实例
@@ -18,9 +18,11 @@ service.interceptors.request.use(config => {
   if (config.method === 'post') {
     config.data = qs.stringify(config.data)
   }
+  console.log(store)
+  console.log(store.token)
   const token = getToken()
   if (token) {
-    config.headers['Authorization'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
+    config.headers['Trace-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   }
   return config
 }, error => {
@@ -33,14 +35,7 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(function (response) {
   console.log(response.data)
   let data = response.data
-  const code = data.code
-  if (code == 401) {
-    router.push({path:'/'})
-    // this.$router.push({path: '/'})
-     // location.reload('/')// 为了重新实例化vue-router对象 避免bug
-    // location.href = '/'
 
-  }
   // 对响应数据做点什么
   return response;
 }, function (error) {

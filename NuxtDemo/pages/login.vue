@@ -13,18 +13,19 @@
     data() {
       return {
         username: '13537871009',
-        password: '123456x'
+        password: ''
       }
     },
     methods: {
       handleLogin() {
         const username = this.username
         const password = this.password
-        this.$store.dispatch('user/login', {username, password}).then(() => {
+
+        this.$store.dispatch('login', {username, password}).then(() => {
           //跳转页面
           this.$router.push({path: '/member'})
-        }).catch(() => {
-
+        }).catch((error) => {
+          alert(error);
         })
       }
     }
