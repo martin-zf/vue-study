@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {getToken, setToken,removeToken} from '~/utils/auth'
+import {getToken, setToken,removeToken} from '~/utils/cookie'
 import {encode} from '~/utils/crypto'
 import {login, getAccountIncome} from '~/api/user'
 Vue.use(Vuex)

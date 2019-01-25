@@ -58,6 +58,9 @@ module.exports = {
       }
 
     }
-  }
+  }/*,
+  router: {
+    middleware: 'userAuth'
+  }*/
 }
 

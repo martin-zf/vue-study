@@ -1,7 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import {getToken} from '~/utils/auth'
-import store from '~/store'
+import {getToken} from '~/utils/cookie'
 
 
 // 创建axios实例
@@ -18,8 +17,7 @@ service.interceptors.request.use(config => {
   if (config.method === 'post') {
     config.data = qs.stringify(config.data)
   }
-  console.log(store)
-  console.log(store.token)
+
   const token = getToken()
   if (token) {
     config.headers['Trace-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
@@ -33,8 +31,18 @@ service.interceptors.request.use(config => {
 
 // respone拦截器
 service.interceptors.response.use(function (response) {
-  console.log(response.data)
-  let data = response.data
+  if (process.client) {
+    let data = response.data
+    if (data.code == 401) {
+      setTimeout(()=>{
+        location.href = '/login'
+      },2000)
+
+    }
+  }
+  if (process.server) {
+
+  }
 
   // 对响应数据做点什么
   return response;
