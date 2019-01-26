@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  //跨域请求
+  //Access to XMLHttpRequest at 'http://127.0.0.1:8887/' from origin 'http://127.0.0.1:8888' has been blocked by CORS policy:
+  // No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+  //解决方案
+  /**
+   * 1、在服务器设计允许跨域
+   * 2、使用jsonp  script，link img标签
+   * @type {XMLHttpRequest}
+   */
+  /*var xhr = new XMLHttpRequest()
+  xhr.open("GET","http://127.0.0.1:8887")
+  xhr.send()*/
+</script>
+
+<script src="http://127.0.0.1:8887"></script>
+</body>
+</html>

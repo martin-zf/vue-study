@@ -10,11 +10,16 @@
 
 <script>
   import {login, getAccountIncome} from '~/api/user'
-
+  import {getToken, setToken, removeToken} from '~/utils/cookie'
   export default {
     name: "index",
     created() {
       this.getAccountIncome()
+    },
+    fetch({ store, params}){
+
+
+
     },
     methods: {
       getAccountIncome() {
